@@ -306,7 +306,7 @@ function RPNCalcFrame_RclPress(self)
 	RPNCalcFrame_UpdateDisplay(self)
 end
 function RPNCalcFrame_EexPress(self)
-	
+	RPNCalcFrame_NumPress(self, nil, "E")
 	RPNCalcFrame_UpdateDisplay(self)
 end
 

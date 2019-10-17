@@ -24,10 +24,15 @@ end
 
 function RPNCalcTable.RPNCalc:Recall(name)
 	local value = self.Memory[name]
+	if not self:IsEntryFlagSet() then
+		if not self.bEnterLast then
+				self:Push(self.Stack[1])
+		end
+	end
 	if value ~= nil then
-		self.Stack[1] = self.Memory[name]
+		self.Stack[1] = value
 	else
-		self.Stack[1] = 0.0
+		self:Push(0.0)
 	end
 	self:ClearEntryFlag()
 	self.bEnterLast = false
@@ -41,10 +46,16 @@ function RPNCalcTable.RPNCalc:New(stack_size)
 	 for i = 1, stack_size do
 	     table.insert(new_stack, 0.0)
 	 end
-	 obj = obj or {Stack = new_stack, Memory = {}, TrigMode = 0, bDecPtLast = false, bDigitEntryLast = false}
+	 obj = obj or {Stack = new_stack, Memory = {}, TrigMode = 0, bDecPtLast = false, bDigitEntryLast = false, bEnterLast = false}
 	 setmetatable(obj, self)
 	 self.__index = self
 	 return obj
+end
+
+function RPNCalcTable.RPNCalc:ClearAllFlags()
+	self.bDecPtLast = false
+	self.bDigitEntryLast = false
+	self.bEnterLast = false
 end
 
 function RPNCalcTable.RPNCalc:ClearStack()
@@ -52,6 +63,7 @@ function RPNCalcTable.RPNCalc:ClearStack()
 	     self.Stack[i] = 0.0
 	 end
 	 self.Memory = {}
+	 self:ClearAllFlags()
 end
 
 function RPNCalcTable.RPNCalc:ClearEntryFlag()
@@ -243,32 +255,32 @@ function RPNCalcTable.RPNCalc:Negate()
 end
 
 function RPNCalcTable.RPNCalc:AppendToAccumulator(char)
-	if self.bDecPtLast == false and char == "." then
-		-- Don't do anything if a decimal point was the
-		-- already last key
-		self.bDecPtLast = true
-	elseif tonumber(char) ~= nil then
-
-		local numstr
-		if self:IsEntryFlagSet() == true then
-			if  self.bEnterLast == true then
-				numstr = ""
-				self.bEnterLast = false
-			else
-				numstr = tostring(self.Stack[1])
-			end
-		else
-			self:PushAccumulator()
-			numstr = ""
+	if tonumber(self.Stack[1]) == 0 and char == "E" then
+		self.Stack[1] = "1"
+		self:SetEntryFlag()
+	elseif char == "E" then
+		self:SetEntryFlag()
+	end
+	
+	if not self:IsEntryFlagSet() then
+		if not self.bEnterLast then
+			self:Push(self.Stack[1])
 		end
-		
-		if self.bDecPtLast == true and string.find(numstr, "%.") == nil then
-			numstr = numstr .. "." .. char
-		else
-			numstr = numstr .. char
+		self.Stack[1] = ""
+	end
+	
+	local bHasE = string.find(self.Stack[1], "E") ~= nil
+	local bHasDecPt = string.find(self.Stack[1], "%.") ~= nil
+	
+	if char == "E" and bHasE then
+	
+	elseif char == "." and (bHasDecPt or bHasE) then
+	
+	else
+		if self.Stack[1] == 0 or self.Stack[1] == "0" then
+			self.Stack[1] = ""
 		end
-		self.Stack[1] = tonumber(numstr)
-		self.bDecPtLast = false
+		self.Stack[1] = self.Stack[1] .. tostring(char)
 		self:SetEntryFlag()
 	end
 end
@@ -277,7 +289,7 @@ function RPNCalcTable.RPNCalc:EnterKey()
 	-- This pushes the stack up and places 0.0 in the accumulator
 	self:PushAccumulator()
 	self.bEnterLast = true
-	self:SetEntryFlag()
+	self:ClearEntryFlag()
 end
 
 

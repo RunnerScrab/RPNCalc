@@ -1,0 +1,7 @@
+## Interface: 11302
+## Title: RPNCalc
+## Author: Meowburg
+## Version: 1
+
+RPNCalc_Core.lua
+RPNCalcFrame.xml

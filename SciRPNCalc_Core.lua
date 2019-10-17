@@ -182,7 +182,7 @@ function SciRPNCalcTable.SciRPNCalc:ApplyInverseTrigonometricOperation(operation
 		result = (result * 180)/math.pi
 	else
 		-- Gradians:
-		a = (200*result)/math.pi
+		result = (200*result)/math.pi
 	end
 	
 	self:Push(result)

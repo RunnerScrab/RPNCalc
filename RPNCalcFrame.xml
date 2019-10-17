@@ -40,7 +40,7 @@
 			</OnShow>
 		</Scripts>
 		<Frames>	
-		<Frame name="OutputBackgroundFrame">
+			<Frame name="OutputBackgroundFrame" hidden = "true">
 				<Size x="224" y="120" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-55" />
@@ -92,7 +92,7 @@
 					</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn7" inherits="UIPanelButtonTemplate" text="7">
+			<Button name="btn7" inherits="UIPanelButtonTemplate" text="7" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-361" />
@@ -104,7 +104,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 7);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn8" inherits="UIPanelButtonTemplate" text="8">
+			<Button name="btn8" inherits="UIPanelButtonTemplate" text="8" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-361" />
@@ -116,7 +116,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 8);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn9" inherits="UIPanelButtonTemplate" text="9">
+			<Button name="btn9" inherits="UIPanelButtonTemplate" text="9" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-361" />
@@ -128,7 +128,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 9);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn4" inherits="UIPanelButtonTemplate" text="4">
+			<Button name="btn4" inherits="UIPanelButtonTemplate" text="4" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-417" />
@@ -140,7 +140,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 4);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn5" inherits="UIPanelButtonTemplate" text="5">
+			<Button name="btn5" inherits="UIPanelButtonTemplate" text="5" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-417" />
@@ -152,7 +152,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 5);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn6" inherits="UIPanelButtonTemplate" text="6">
+			<Button name="btn6" inherits="UIPanelButtonTemplate" text="6" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-417" />
@@ -164,7 +164,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 6);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn1" inherits="UIPanelButtonTemplate" text="1">
+			<Button name="btn1" inherits="UIPanelButtonTemplate" text="1" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-473" />
@@ -176,7 +176,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 1);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn2" inherits="UIPanelButtonTemplate" text="2">
+			<Button name="btn2" inherits="UIPanelButtonTemplate" text="2" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-473" />
@@ -188,7 +188,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 2);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn3" inherits="UIPanelButtonTemplate" text="3">
+			<Button name="btn3" inherits="UIPanelButtonTemplate" text="3" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-473" />
@@ -200,7 +200,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 3);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn0" inherits="UIPanelButtonTemplate" text="0">
+			<Button name="btn0" inherits="UIPanelButtonTemplate" text="0" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-529" />
@@ -212,7 +212,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 0);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnDecPt" inherits="UIPanelButtonTemplate" text=".">
+			<Button name="btnDecPt" inherits="UIPanelButtonTemplate" text="." hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-529" />
@@ -224,7 +224,7 @@
 					<OnMouseDown>RPNCalcFrame_NumPress(self, button, ".");</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnPi" inherits="UIPanelButtonTemplate" text="π">
+			<Button name="btnPi" inherits="UIPanelButtonTemplate" text="π" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-529" />
@@ -236,7 +236,7 @@
 					<OnMouseDown>RPNCalcFrame_PiPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSub" inherits="UIPanelButtonTemplate" text="-">
+			<Button name="btnSub" inherits="UIPanelButtonTemplate" text="-" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-361" />
@@ -248,7 +248,7 @@
 					<OnMouseDown>RPNCalcFrame_SubPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnAdd" inherits="UIPanelButtonTemplate" text="+">
+			<Button name="btnAdd" inherits="UIPanelButtonTemplate" text="+" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-417" />
@@ -260,7 +260,7 @@
 					<OnMouseDown>RPNCalcFrame_AddPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnMul" inherits="UIPanelButtonTemplate" text="X">
+			<Button name="btnMul" inherits="UIPanelButtonTemplate" text="X" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-473" />
@@ -272,7 +272,7 @@
 					<OnMouseDown>RPNCalcFrame_MulPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnDiv" inherits="UIPanelButtonTemplate" text="/">
+			<Button name="btnDiv" inherits="UIPanelButtonTemplate" text="/" hidden = "true">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-529" />
@@ -284,7 +284,7 @@
 					<OnMouseDown>RPNCalcFrame_DivPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x">
+			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-177" />
@@ -296,7 +296,7 @@
 					<OnMouseDown>RPNCalcFrame_PowPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnLog" inherits="UIPanelButtonTemplate" text="log">
+			<Button name="btnLog" inherits="UIPanelButtonTemplate" text="log" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-177" />
@@ -308,7 +308,7 @@
 					<OnMouseDown>RPNCalcFrame_Log10Press(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnNatLog" inherits="UIPanelButtonTemplate" text="ln">
+			<Button name="btnNatLog" inherits="UIPanelButtonTemplate" text="ln" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-177" />
@@ -320,7 +320,7 @@
 					<OnMouseDown>RPNCalcFrame_NaturalLogPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnExp" inherits="UIPanelButtonTemplate" text="e^x">
+			<Button name="btnExp" inherits="UIPanelButtonTemplate" text="e^x" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-177" />
@@ -332,7 +332,7 @@
 					<OnMouseDown>RPNCalcFrame_EtoXPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnClear" inherits="UIPanelButtonTemplate" text="CLR">
+			<Button name="btnClear" inherits="UIPanelButtonTemplate" text="CLR" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-177" />
@@ -344,7 +344,7 @@
 					<OnMouseDown>RPNCalcFrame_CLRPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√">
+			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-223" />
@@ -356,7 +356,7 @@
 					<OnMouseDown>RPNCalcFrame_SqrtPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnArc" inherits="UIPanelButtonTemplate" text="arc">
+			<Button name="btnArc" inherits="UIPanelButtonTemplate" text="arc" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-223" />
@@ -368,7 +368,7 @@
 					<OnMouseDown>RPNCalcFrame_ArcPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSin" inherits="UIPanelButtonTemplate" text="sin">
+			<Button name="btnSin" inherits="UIPanelButtonTemplate" text="sin" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-223" />
@@ -380,7 +380,7 @@
 					<OnMouseDown>RPNCalcFrame_SinPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnCos" inherits="UIPanelButtonTemplate" text="cos">
+			<Button name="btnCos" inherits="UIPanelButtonTemplate" text="cos" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-223" />
@@ -392,7 +392,7 @@
 					<OnMouseDown>RPNCalcFrame_CosPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnTan" inherits="UIPanelButtonTemplate" text="tan">
+			<Button name="btnTan" inherits="UIPanelButtonTemplate" text="tan" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-223" />
@@ -404,7 +404,7 @@
 					<OnMouseDown>RPNCalcFrame_TanPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnInv" inherits="UIPanelButtonTemplate" text="1/x">
+			<Button name="btnInv" inherits="UIPanelButtonTemplate" text="1/x" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-269" />
@@ -416,7 +416,7 @@
 					<OnMouseDown>RPNCalcFrame_InvPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSwap" inherits="UIPanelButtonTemplate" text="x↔y">
+			<Button name="btnSwap" inherits="UIPanelButtonTemplate" text="x↔y" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-269" />
@@ -428,7 +428,7 @@
 					<OnMouseDown>RPNCalcFrame_SwapPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnRotateDown" inherits="UIPanelButtonTemplate" text="R↓">
+			<Button name="btnRotateDown" inherits="UIPanelButtonTemplate" text="R↓" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-269" />
@@ -440,7 +440,7 @@
 					<OnMouseDown>RPNCalcFrame_RotDownPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSto" inherits="UIPanelButtonTemplate" text="STO">
+			<Button name="btnSto" inherits="UIPanelButtonTemplate" text="STO" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-269" />
@@ -452,7 +452,7 @@
 					<OnMouseDown>RPNCalcFrame_StoPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnRcl" inherits="UIPanelButtonTemplate" text="RCL">
+			<Button name="btnRcl" inherits="UIPanelButtonTemplate" text="RCL" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-269" />
@@ -464,7 +464,7 @@
 					<OnMouseDown>RPNCalcFrame_RclPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnEnter" inherits="UIPanelButtonTemplate" text="ENTER">
+			<Button name="btnEnter" inherits="UIPanelButtonTemplate" text="ENTER" hidden = "true">
 				<Size x="83" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-315" />
@@ -476,7 +476,7 @@
 					<OnMouseDown>RPNCalcFrame_EnterPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnNeg" inherits="UIPanelButtonTemplate" text="±">
+			<Button name="btnNeg" inherits="UIPanelButtonTemplate" text="±" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-315" />
@@ -488,7 +488,7 @@
 					<OnMouseDown>RPNCalcFrame_NegPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnEex" inherits="UIPanelButtonTemplate" text="E ex">
+			<Button name="btnEex" inherits="UIPanelButtonTemplate" text="E ex" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-315" />
@@ -500,7 +500,7 @@
 					<OnMouseDown>RPNCalcFrame_EexPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnClx" inherits="UIPanelButtonTemplate" text="cl x">
+			<Button name="btnClx" inherits="UIPanelButtonTemplate" text="cl x" hidden = "true">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-315" />

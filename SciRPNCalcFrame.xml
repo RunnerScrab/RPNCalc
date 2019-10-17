@@ -1,7 +1,7 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file="RPNCalc_Core.lua" />
-	<Script file="RPNCalc.lua" />
-	<Frame text="RPN Calc" name="RPNCalcFrame" parent="UIParent" movable="true" frameStrata="DIALOG" enableMouse="true">
+	<Script file="SciRPNCalc_Core.lua" />
+	<Script file="SciRPNCalc.lua" />
+	<Frame text="RPN Calc" name="SciRPNCalcFrame" parent="UIParent" movable="true" frameStrata="DIALOG" enableMouse="true">
 		<Size x="280" y="620" />
 		<Anchors>
 			<Anchor point="CENTER" x="-180" y="57" />
@@ -83,7 +83,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_CloseWindow(self:GetParent());
+						SciRPNCalcFrame_CloseWindow(self:GetParent());
 					</OnMouseDown>
 				</Scripts>
 			</Button>
@@ -94,7 +94,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_MinimizeUI(self:GetParent(), button);
+						SciRPNCalcFrame_MinimizeUI(self:GetParent(), button);
 					</OnMouseDown>
 				</Scripts>
 			</Button>
@@ -105,7 +105,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 7);
+						SciRPNCalcFrame_NumPress(self, button, 7);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -119,7 +119,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 8);
+						SciRPNCalcFrame_NumPress(self, button, 8);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -133,7 +133,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 9);
+						SciRPNCalcFrame_NumPress(self, button, 9);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -147,7 +147,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 4);
+						SciRPNCalcFrame_NumPress(self, button, 4);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -161,7 +161,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 5);
+						SciRPNCalcFrame_NumPress(self, button, 5);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -175,7 +175,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 6);
+						SciRPNCalcFrame_NumPress(self, button, 6);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -189,7 +189,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 1);
+						SciRPNCalcFrame_NumPress(self, button, 1);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -203,7 +203,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 2);
+						SciRPNCalcFrame_NumPress(self, button, 2);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -217,7 +217,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 3);
+						SciRPNCalcFrame_NumPress(self, button, 3);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -231,7 +231,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, 0);
+						SciRPNCalcFrame_NumPress(self, button, 0);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -245,7 +245,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NumPress(self, button, ".");
+						SciRPNCalcFrame_NumPress(self, button, ".");
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -259,7 +259,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_PiPress(self);
+						SciRPNCalcFrame_PiPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -273,7 +273,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_SubPress(self);
+						SciRPNCalcFrame_SubPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -287,7 +287,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_AddPress(self);
+						SciRPNCalcFrame_AddPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -301,7 +301,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_MulPress(self);
+						SciRPNCalcFrame_MulPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -315,7 +315,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_DivPress(self);
+						SciRPNCalcFrame_DivPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -329,7 +329,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_PowPress(self);
+						SciRPNCalcFrame_PowPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -343,7 +343,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_Log10Press(self);
+						SciRPNCalcFrame_Log10Press(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -357,7 +357,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NaturalLogPress(self);
+						SciRPNCalcFrame_NaturalLogPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -371,7 +371,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_EtoXPress(self);
+						SciRPNCalcFrame_EtoXPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -385,7 +385,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_CLRPress(self);
+						SciRPNCalcFrame_CLRPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -399,7 +399,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_SqrtPress(self);
+						SciRPNCalcFrame_SqrtPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -413,7 +413,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_ArcPress(self);
+						SciRPNCalcFrame_ArcPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -427,7 +427,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_SinPress(self);
+						SciRPNCalcFrame_SinPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -441,7 +441,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_CosPress(self);
+						SciRPNCalcFrame_CosPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -455,7 +455,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_TanPress(self);
+						SciRPNCalcFrame_TanPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -469,7 +469,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_InvPress(self);
+						SciRPNCalcFrame_InvPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -483,7 +483,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_SwapPress(self);
+						SciRPNCalcFrame_SwapPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -497,7 +497,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_RotDownPress(self);
+						SciRPNCalcFrame_RotDownPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -511,7 +511,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_StoPress(self);
+						SciRPNCalcFrame_StoPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -525,7 +525,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_RclPress(self);
+						SciRPNCalcFrame_RclPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -539,7 +539,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_EnterPress(self);
+						SciRPNCalcFrame_EnterPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -553,7 +553,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_NegPress(self);
+						SciRPNCalcFrame_NegPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -567,7 +567,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_EexPress(self);
+						SciRPNCalcFrame_EexPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -581,7 +581,7 @@
 				</Anchors>
 				<Scripts>
 					<OnMouseDown>
-						RPNCalcFrame_ClrXPress(self);
+						SciRPNCalcFrame_ClrXPress(self);
 					</OnMouseDown>
 				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
@@ -594,7 +594,7 @@
 					<Anchor point="TOPLEFT" x="160" y="-171" />
 				</Anchors>
 				<Scripts>
-					<OnClick>RPNCalcFrame_CheckRadians(self, button, down);</OnClick>
+					<OnClick>SciRPNCalcFrame_CheckRadians(self, button, down);</OnClick>
 				</Scripts>
 			</CheckButton>
 			<CheckButton name="checkDeg" inherits="UICheckButtonTemplate" text="Degrees">
@@ -603,7 +603,7 @@
 					<Anchor point="TOPLEFT" x="197" y="-171" />
 				</Anchors>
 				<Scripts>
-					<OnClick>RPNCalcFrame_CheckDegrees(self, button, down);</OnClick>
+					<OnClick>SciRPNCalcFrame_CheckDegrees(self, button, down);</OnClick>
 				</Scripts>
 			</CheckButton>
 			<CheckButton name="checkGrad" inherits="UICheckButtonTemplate" text="Gradians">
@@ -612,31 +612,31 @@
 					<Anchor point="TOPLEFT" x="236" y="-171" />
 				</Anchors>
 				<Scripts>
-					<OnClick>RPNCalcFrame_CheckGradians(self, button, down);</OnClick>
+					<OnClick>SciRPNCalcFrame_CheckGradians(self, button, down);</OnClick>
 				</Scripts>
 			</CheckButton>
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				RPNCalcFrame_OnLoad(self);
+				SciRPNCalcFrame_OnLoad(self);
 			</OnLoad>
 			<OnMouseDown>
-				RPNCalcFrame_OnMouseDown(self, button);
+				SciRPNCalcFrame_OnMouseDown(self, button);
 			</OnMouseDown>
 			<OnMouseUp>
-				RPNCalcFrame_OnMouseUp(self, button);
+				SciRPNCalcFrame_OnMouseUp(self, button);
 			</OnMouseUp>
 			<OnDragStart>
-				RPNCalcFrame_StartMoving(self);
+				SciRPNCalcFrame_StartMoving(self);
 			</OnDragStart>
 			<OnDragStop>
-				RPNCalcFrame_StopMoving(self);
+				SciRPNCalcFrame_StopMoving(self);
 			</OnDragStop>
 			<OnKeyDown>
-				RPNCalcFrame_OnKeyDown(self, key);
+				SciRPNCalcFrame_OnKeyDown(self, key);
 			</OnKeyDown>
 			<OnShow>
-				RPNCalcFrame_OnShow(self);
+				SciRPNCalcFrame_OnShow(self);
 			</OnShow>
 		</Scripts>
 	</Frame>

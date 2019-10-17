@@ -23,84 +23,84 @@ local g_bIsUIMinimized = true
 local g_dwNormalHeight = 620
 local g_TrigMode = 0 -- TODO: Persist this setting
 
-function RPNCalcFrame_OnLoad(self)
+function SciRPNCalcFrame_OnLoad(self)
 
 	g_bIsUIMinimized = true
-	RPNCalcFrame:SetHeight(70)
-	RPNCalcFrame_SetAllChildrenVisibility(RPNCalcFrame, false)
+	SciRPNCalcFrame:SetHeight(70)
+	SciRPNCalcFrame_SetAllChildrenVisibility(SciRPNCalcFrame, false)
 	
 	self:RegisterForDrag("LeftButton");
-	calculator = RPNCalcTable.RPNCalc:New(6)
+	calculator = SciRPNCalcTable.SciRPNCalc:New(6)
 	calculator:SetTrigMode(g_TrigMode)
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 	
 end
 
-function RPNCalcFrame_OnShow(self)
+function SciRPNCalcFrame_OnShow(self)
 
 end
 
-function RPNCalcFrame_OnMouseDown(self, button)
+function SciRPNCalcFrame_OnMouseDown(self, button)
 	
 end
 
-function RPNCalcFrame_OnMouseUp(self, button)
+function SciRPNCalcFrame_OnMouseUp(self, button)
 	
 end
 
-function RPNCalcFrame_OnKeyDown(self, key)
+function SciRPNCalcFrame_OnKeyDown(self, key)
 	self:SetPropagateKeyboardInput(false)
 	if key == "ENTER" then
-		RPNCalcFrame_EnterPress(self)
+		SciRPNCalcFrame_EnterPress(self)
 	elseif key == "NUMPAD1" then
-		RPNCalcFrame_NumPress(self, nil, 1)
+		SciRPNCalcFrame_NumPress(self, nil, 1)
 	elseif key == "NUMPAD2" then
-		RPNCalcFrame_NumPress(self, nil, 2)
+		SciRPNCalcFrame_NumPress(self, nil, 2)
 	elseif key == "NUMPAD3" then
-		RPNCalcFrame_NumPress(self, nil, 3)
+		SciRPNCalcFrame_NumPress(self, nil, 3)
 	elseif key == "NUMPAD4" then
-		RPNCalcFrame_NumPress(self, nil, 4)
+		SciRPNCalcFrame_NumPress(self, nil, 4)
 	elseif key == "NUMPAD5" then
-		RPNCalcFrame_NumPress(self, nil, 5)
+		SciRPNCalcFrame_NumPress(self, nil, 5)
 	elseif key == "NUMPAD6" then
-		RPNCalcFrame_NumPress(self, nil, 6)
+		SciRPNCalcFrame_NumPress(self, nil, 6)
 	elseif key == "NUMPAD7" then
-		RPNCalcFrame_NumPress(self, nil, 7)
+		SciRPNCalcFrame_NumPress(self, nil, 7)
 	elseif key == "NUMPAD8" then
-		RPNCalcFrame_NumPress(self, nil, 8)
+		SciRPNCalcFrame_NumPress(self, nil, 8)
 	elseif key == "NUMPAD9" then
-		RPNCalcFrame_NumPress(self, nil, 9)
+		SciRPNCalcFrame_NumPress(self, nil, 9)
 	elseif key == "NUMPAD0" then
-		RPNCalcFrame_NumPress(self, nil, 0)
+		SciRPNCalcFrame_NumPress(self, nil, 0)
 	elseif key == "NUMPADDECIMAL" then
-		RPNCalcFrame_NumPress(self, nil, ".")
+		SciRPNCalcFrame_NumPress(self, nil, ".")
 	elseif key == "NUMPADDIVIDE" then
-		RPNCalcFrame_DivPress(self)
+		SciRPNCalcFrame_DivPress(self)
 	elseif key == "NUMPADMULTIPLY" then
-		RPNCalcFrame_MulPress(self)
+		SciRPNCalcFrame_MulPress(self)
 	elseif key == "NUMPADPLUS" then
-		RPNCalcFrame_AddPress(self)
+		SciRPNCalcFrame_AddPress(self)
 	elseif key == "NUMPADMINUS" then
-		RPNCalcFrame_SubPress(self)
+		SciRPNCalcFrame_SubPress(self)
 	else
 		self:SetPropagateKeyboardInput(true)
 	end
 end
 
-function RPNCalcFrame_StartMoving(self)
+function SciRPNCalcFrame_StartMoving(self)
 	self:StartMoving()
 end
 
-function RPNCalcFrame_StopMoving(self)
+function SciRPNCalcFrame_StopMoving(self)
 	self:StopMovingOrSizing()
 end
 
 
-function RPNCalcFrame_CloseWindow(self)
+function SciRPNCalcFrame_CloseWindow(self)
 	self:Hide()
 end
 
-function RPNCalcFrame_SetAllChildrenVisibility(self, v)
+function SciRPNCalcFrame_SetAllChildrenVisibility(self, v)
 
 	if v then 
 		degreesFontString:Show()
@@ -128,7 +128,7 @@ local function DebugPrint(str)
 	--print(str)
 end
 
-function RPNCalcFrame_MinimizeUI(self, button)
+function SciRPNCalcFrame_MinimizeUI(self, button)
 
 	g_bIsUIMinimized = not g_bIsUIMinimized
 	if g_bIsUIMinimized then
@@ -136,25 +136,25 @@ function RPNCalcFrame_MinimizeUI(self, button)
 	else
 		self:SetHeight(g_dwNormalHeight)
 	end
-	RPNCalcFrame_SetAllChildrenVisibility(self, not g_bIsUIMinimized)
+	SciRPNCalcFrame_SetAllChildrenVisibility(self, not g_bIsUIMinimized)
 end
 
-function RPNCalcFrame_CheckDegrees(self, button, down)
+function SciRPNCalcFrame_CheckDegrees(self, button, down)
 	calculator:SetTrigMode(1)
-	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+	SciRPNCalcFrame_UpdateDisplay(SciRPNCalcFrame)
 end
 
-function RPNCalcFrame_CheckRadians(self, button, down)
+function SciRPNCalcFrame_CheckRadians(self, button, down)
 	calculator:SetTrigMode(0)
-	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+	SciRPNCalcFrame_UpdateDisplay(SciRPNCalcFrame)
 end
 
-function RPNCalcFrame_CheckGradians(self, button, down)
+function SciRPNCalcFrame_CheckGradians(self, button, down)
 	calculator:SetTrigMode(2)
-	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+	SciRPNCalcFrame_UpdateDisplay(SciRPNCalcFrame)
 end
 
-function RPNCalcFrame_UpdateTrigModeCheckboxes(self)
+function SciRPNCalcFrame_UpdateTrigModeCheckboxes(self)
 	local mode = calculator:GetTrigMode()
 
 	if mode == 0 then
@@ -187,7 +187,7 @@ function GetRowFormatString(val)
 	end
 end
 
-function RPNCalcFrame_UpdateDisplay(self)
+function SciRPNCalcFrame_UpdateDisplay(self)
 	RPNOutputFrame:Clear()
 
 	for row=#calculator.Stack,3,-1 do
@@ -222,13 +222,13 @@ function RPNCalcFrame_UpdateDisplay(self)
 		btnSto:UnlockHighlight()
 	end
 	
-	RPNCalcFrame_UpdateTrigModeCheckboxes(self)
+	SciRPNCalcFrame_UpdateTrigModeCheckboxes(self)
 	
-	RPNCalc_HighlightNumberKeys(self, g_bSTOPressed or g_bRCLPressed)
+	SciRPNCalc_HighlightNumberKeys(self, g_bSTOPressed or g_bRCLPressed)
 	
 end
 
-function RPNCalc_HighlightNumberKeys(self, on)
+function SciRPNCalc_HighlightNumberKeys(self, on)
 	local numkeys = {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9}
 	for i = 1, #numkeys do
 		if on then
@@ -239,7 +239,7 @@ function RPNCalc_HighlightNumberKeys(self, on)
 	end
 end
 
-function RPNCalcFrame_NumPress(self, button, number)
+function SciRPNCalcFrame_NumPress(self, button, number)
 	if g_bRCLPressed then
 		calculator:Recall(number)
 		g_bSTOPressed = false
@@ -251,153 +251,153 @@ function RPNCalcFrame_NumPress(self, button, number)
 	else
 		calculator:AppendToAccumulator(number)
 	end
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_MulPress(self)
+function SciRPNCalcFrame_MulPress(self)
 	calculator:Mul()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_DivPress(self)
+function SciRPNCalcFrame_DivPress(self)
 	calculator:Div()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_SubPress(self)
+function SciRPNCalcFrame_SubPress(self)
 	calculator:Sub()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_AddPress(self)
+function SciRPNCalcFrame_AddPress(self)
 	calculator:Add()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_PowPress(self)
+function SciRPNCalcFrame_PowPress(self)
 	calculator:Exponentiate()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_EtoXPress(self)
+function SciRPNCalcFrame_EtoXPress(self)
 	calculator:e_To_x()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_SqrtPress(self)
+function SciRPNCalcFrame_SqrtPress(self)
 	calculator:Sqrt()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_NaturalLogPress(self)
+function SciRPNCalcFrame_NaturalLogPress(self)
 	calculator:NaturalLog()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_Log10Press(self)
+function SciRPNCalcFrame_Log10Press(self)
 	calculator:Log10()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_InvPress(self)
+function SciRPNCalcFrame_InvPress(self)
 	calculator:Inv()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_SquarePress(self)
+function SciRPNCalcFrame_SquarePress(self)
 	calculator:Square()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_SinPress(self)
+function SciRPNCalcFrame_SinPress(self)
 	if g_bArcPressed then
 		calculator:Arcsin()
 	else
 		calculator:Sin()
 	end
 	g_bArcPressed = false
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_CosPress(self)
+function SciRPNCalcFrame_CosPress(self)
 	if g_bArcPressed then
 		calculator:Arccos()
 	else
 		calculator:Cos()
 	end
 	g_bArcPressed = false
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_TanPress(self)
+function SciRPNCalcFrame_TanPress(self)
 	if g_bArcPressed then
 		calculator:Arctan()
 	else
 		calculator:Tan()
 	end
 	g_bArcPressed = false
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_ArcPress(self)
+function SciRPNCalcFrame_ArcPress(self)
 	-- This is a one time use mode button
 	g_bArcPressed = not g_bArcPressed
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_NegPress(self)
+function SciRPNCalcFrame_NegPress(self)
 	calculator:Negate()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_RotDownPress(self)
+function SciRPNCalcFrame_RotDownPress(self)
 	calculator:RotateStackDown()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_SwapPress(self)
+function SciRPNCalcFrame_SwapPress(self)
 	calculator:Swap()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_PiPress(self)
+function SciRPNCalcFrame_PiPress(self)
 	calculator:Push(math.pi)
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_StoPress(self)
+function SciRPNCalcFrame_StoPress(self)
 	g_bSTOPressed = not g_bSTOPressed
 	g_bRCLPressed = false
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
-function RPNCalcFrame_RclPress(self)
+function SciRPNCalcFrame_RclPress(self)
 	g_bRCLPressed = not g_bRCLPressed
 	g_bSTOPressed = false
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
-function RPNCalcFrame_EexPress(self)
-	RPNCalcFrame_NumPress(self, nil, "E")
-	RPNCalcFrame_UpdateDisplay(self)
+function SciRPNCalcFrame_EexPress(self)
+	SciRPNCalcFrame_NumPress(self, nil, "E")
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_ClrXPress(self)
+function SciRPNCalcFrame_ClrXPress(self)
 	calculator:ClearAccumulator()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_CLRPress(self)
+function SciRPNCalcFrame_CLRPress(self)
 	calculator:ClearStack()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function RPNCalcFrame_EnterPress(self)
+function SciRPNCalcFrame_EnterPress(self)
 	calculator:EnterKey()
-	RPNCalcFrame_UpdateDisplay(self)
+	SciRPNCalcFrame_UpdateDisplay(self)
 end
 
-function ShowRPNCalc()
-	RPNCalcFrame:Show()
+function ShowSciRPNCalc()
+	SciRPNCalcFrame:Show()
 end
 
-SlashCmdList["RPNCALC"] = ShowRPNCalc;
-SLASH_RPNCALC1 = "/rpncalc";
+SlashCmdList["SCIRPNCALC"] = ShowSciRPNCalc;
+SLASH_SCIRPNCALC1 = "/scirpncalc";

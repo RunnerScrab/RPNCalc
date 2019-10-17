@@ -1,0 +1,7 @@
+## Interface: 11302
+## Title: SciRPNCalc
+## Author: Meowburger
+## Version: 1
+
+SciRPNCalc_Core.lua
+SciRPNCalcFrame.xml

@@ -15,14 +15,14 @@ along with this program; if not, write to the Free Software Foundation,
 Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ]]--
 
-RPNCalcTable = {RPNCalc = {}}
+SciRPNCalcTable = {SciRPNCalc = {}}
 
-function RPNCalcTable.RPNCalc:Store(name)
+function SciRPNCalcTable.SciRPNCalc:Store(name)
 	 self.Memory[name] = self:Pop()
 	 self:ClearEntryFlag()
 end
 
-function RPNCalcTable.RPNCalc:Recall(name)
+function SciRPNCalcTable.SciRPNCalc:Recall(name)
 	local value = self.Memory[name]
 	if not self:IsEntryFlagSet() then
 		if not self.bEnterLast then
@@ -38,7 +38,7 @@ function RPNCalcTable.RPNCalc:Recall(name)
 	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:New(stack_size)
+function SciRPNCalcTable.SciRPNCalc:New(stack_size)
 	 new_stack = {}
 	 if stack_size == nil then
 	    stack_size = 4
@@ -52,21 +52,21 @@ function RPNCalcTable.RPNCalc:New(stack_size)
 	 return obj
 end
 
-function RPNCalcTable.RPNCalc:SetTrigMode(v)
+function SciRPNCalcTable.SciRPNCalc:SetTrigMode(v)
 	self.TrigMode = v
 end
 
-function RPNCalcTable.RPNCalc:GetTrigMode()
+function SciRPNCalcTable.SciRPNCalc:GetTrigMode()
 	return self.TrigMode
 end
 
-function RPNCalcTable.RPNCalc:ClearAllFlags()
+function SciRPNCalcTable.SciRPNCalc:ClearAllFlags()
 	self.bDecPtLast = false
 	self.bDigitEntryLast = false
 	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:ClearStack()
+function SciRPNCalcTable.SciRPNCalc:ClearStack()
 	 for i=1,#self.Stack do
 	     self.Stack[i] = 0.0
 	 end
@@ -74,25 +74,25 @@ function RPNCalcTable.RPNCalc:ClearStack()
 	 self:ClearAllFlags()
 end
 
-function RPNCalcTable.RPNCalc:ClearEntryFlag()
+function SciRPNCalcTable.SciRPNCalc:ClearEntryFlag()
 	self.bDigitEntryLast = false
 end
 
-function RPNCalcTable.RPNCalc:SetEntryFlag()
+function SciRPNCalcTable.SciRPNCalc:SetEntryFlag()
 	self.bDigitEntryLast = true
 end
 
-function RPNCalcTable.RPNCalc:IsEntryFlagSet()
+function SciRPNCalcTable.SciRPNCalc:IsEntryFlagSet()
 	return self.bDigitEntryLast
 end
 
-function RPNCalcTable.RPNCalc:ClearAccumulator()
+function SciRPNCalcTable.SciRPNCalc:ClearAccumulator()
 	self.Stack[1] = 0.0
 	self:SetEntryFlag()
 	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:Swap()
+function SciRPNCalcTable.SciRPNCalc:Swap()
 	 local temp = self.Stack[1]
 	 self.Stack[1] = self.Stack[2]
 	 self.Stack[2] = temp
@@ -100,7 +100,7 @@ function RPNCalcTable.RPNCalc:Swap()
 	 self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:RotateStackDown()
+function SciRPNCalcTable.SciRPNCalc:RotateStackDown()
 	 local v = self.Stack[1]
 	 for i = 1, #self.Stack - 1 do
 	     self.Stack[i] = self.Stack[i+1]
@@ -110,7 +110,7 @@ function RPNCalcTable.RPNCalc:RotateStackDown()
 	 self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:RotateStackUp()
+function SciRPNCalcTable.SciRPNCalc:RotateStackUp()
 	 local v = self.Stack[#self.Stack]
 	 for i = #self.Stack, 2,-1 do
 	     self.Stack[i] = self.Stack[i-1]
@@ -119,11 +119,11 @@ function RPNCalcTable.RPNCalc:RotateStackUp()
 	 self:ClearEntryFlag()
 end
 
-function RPNCalcTable.RPNCalc:PushAccumulator()
+function SciRPNCalcTable.SciRPNCalc:PushAccumulator()
 	self:Push(self.Stack[1])
 end
 
-function RPNCalcTable.RPNCalc:Push(v)
+function SciRPNCalcTable.SciRPNCalc:Push(v)
 	 for i=#self.Stack, 2, -1 do
 	     self.Stack[i] = self.Stack[i - 1]
 	 end
@@ -131,7 +131,7 @@ function RPNCalcTable.RPNCalc:Push(v)
 	 self:ClearEntryFlag()
 end
 
-function RPNCalcTable.RPNCalc:Pop()
+function SciRPNCalcTable.SciRPNCalc:Pop()
 	 local v = self.Stack[1]
 	 for i = 1, #self.Stack - 1 do
 	     self.Stack[i] = self.Stack[i+1]
@@ -140,20 +140,20 @@ function RPNCalcTable.RPNCalc:Pop()
 	 return v
 end
 
-function RPNCalcTable.RPNCalc:ApplyBinaryOperation(operator)
+function SciRPNCalcTable.SciRPNCalc:ApplyBinaryOperation(operator)
 	 local b = self:Pop()
 	 local a = self:Pop()
 	 self:Push(operator(a, b))
 	 self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:ApplyUnaryOperation(operator)
+function SciRPNCalcTable.SciRPNCalc:ApplyUnaryOperation(operator)
 	 local a = self:Pop()
 	 self:Push(operator(a))
 	 self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:ApplyTrigonometricOperation(operation)
+function SciRPNCalcTable.SciRPNCalc:ApplyTrigonometricOperation(operation)
 	local a = self:Pop()
 	
 	if self.TrigMode == 0 then
@@ -171,7 +171,7 @@ function RPNCalcTable.RPNCalc:ApplyTrigonometricOperation(operation)
 	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:ApplyInverseTrigonometricOperation(operation)
+function SciRPNCalcTable.SciRPNCalc:ApplyInverseTrigonometricOperation(operation)
 	local a = self:Pop()
 	local result = operation(a)
 	if self.TrigMode == 0 then
@@ -189,71 +189,81 @@ function RPNCalcTable.RPNCalc:ApplyInverseTrigonometricOperation(operation)
 	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:Add()
+function SciRPNCalcTable.SciRPNCalc:Add()
 	 self:ApplyBinaryOperation(function(a, b) return a + b end)
 end
 
-function RPNCalcTable.RPNCalc:Sub()
+function SciRPNCalcTable.SciRPNCalc:Sub()
 	 self:ApplyBinaryOperation(function(a, b) return a - b end)
 end
 
-function RPNCalcTable.RPNCalc:Mul()
+function SciRPNCalcTable.SciRPNCalc:Mul()
 	 self:ApplyBinaryOperation(function(a, b) return a * b end)
 end
 
-function RPNCalcTable.RPNCalc:Div()
+function SciRPNCalcTable.SciRPNCalc:Div()
 	 self:ApplyBinaryOperation(function(a, b) return a/b end)
 end
 
-function RPNCalcTable.RPNCalc:Exponentiate()
+function SciRPNCalcTable.SciRPNCalc:Exponentiate()
 	 self:ApplyBinaryOperation(function(a, b) return a^b end)
 end	
 
-function RPNCalcTable.RPNCalc:e_To_x()
+function SciRPNCalcTable.SciRPNCalc:e_To_x()
 	 self:ApplyUnaryOperation(function(a) return math.exp(a) end)
 end
 
-function RPNCalcTable.RPNCalc:Sqrt()
-	 self:ApplyUnaryOperation(function(a) return math.sqrt(a) end)
+function SciRPNCalcTable.SciRPNCalc:Sqrt()
+	-- Like the HP-35, do not permit the sqrt of a negative number
+	local operand = self.Stack[1]
+	
+	if operand ~= nil and tonumber(operand) ~= nil then
+		if string.find(operand, "-") == nil or tonumber(operand) >= 0 then
+			self:ApplyUnaryOperation(function(a) return math.sqrt(a) end)
+			do return end
+		end
+	end
+	self.Stack[1] = 0.0
+	self.bEnterLast = false
 end
 
-function RPNCalcTable.RPNCalc:NaturalLog()
+function SciRPNCalcTable.SciRPNCalc:NaturalLog()
 	 self:ApplyUnaryOperation(function(a) return math.log(a) end)
 end
 
-function RPNCalcTable.RPNCalc:Log10()
+function SciRPNCalcTable.SciRPNCalc:Log10()
 	 self:ApplyUnaryOperation(function(a) return math.log10(a) end)
 end	 
 
-function RPNCalcTable.RPNCalc:Inv()
+function SciRPNCalcTable.SciRPNCalc:Inv()
 	 self:ApplyUnaryOperation(function(a) return 1/a end)
 end
 
-function RPNCalcTable.RPNCalc:Square()
+function SciRPNCalcTable.SciRPNCalc:Square()
 	 self:ApplyUnaryOperation(function(a) return a^2 end)
 end
 
-function RPNCalcTable.RPNCalc:Sin()
+function SciRPNCalcTable.SciRPNCalc:Sin()
 	self:ApplyTrigonometricOperation(math.sin)
 end
 
-function RPNCalcTable.RPNCalc:Cos()
+function SciRPNCalcTable.SciRPNCalc:Cos()
 	self:ApplyTrigonometricOperation(math.cos)
 end
 
-function RPNCalcTable.RPNCalc:Tan()
+function SciRPNCalcTable.SciRPNCalc:Tan()
 	self:ApplyTrigonometricOperation(math.tan)
 end
 
-function RPNCalcTable.RPNCalc:Arcsin()
+function SciRPNCalcTable.SciRPNCalc:Arcsin()
 	self:ApplyInverseTrigonometricOperation(math.asin)
 end
 
-function RPNCalcTable.RPNCalc:Arccos()
+function SciRPNCalcTable.SciRPNCalc:Arccos()
 	self:ApplyInverseTrigonometricOperation(math.acos)
 end
 
-function RPNCalcTable.RPNCalc:Arctan()
+function SciRPNCalcTable.SciRPNCalc:Arctan()
 	self:ApplyInverseTrigonometricOperation(math.atan)
 end
 
@@ -269,7 +279,7 @@ function StringLastMatch(str, char)
 	return lastmatchi
 end
 
-function RPNCalcTable.RPNCalc:Negate()
+function SciRPNCalcTable.SciRPNCalc:Negate()
 	-- CH S on the HP-35
 	local bHasE = string.find(self.Stack[1], "E") ~= nil
 	
@@ -286,7 +296,7 @@ function RPNCalcTable.RPNCalc:Negate()
 	end
 end
 
-function RPNCalcTable.RPNCalc:AppendToAccumulator(char)
+function SciRPNCalcTable.SciRPNCalc:AppendToAccumulator(char)
 	if tonumber(self.Stack[1]) == 0 and char == "E" then
 		self.Stack[1] = "1"
 		self:SetEntryFlag()
@@ -317,7 +327,7 @@ function RPNCalcTable.RPNCalc:AppendToAccumulator(char)
 	end
 end
 
-function RPNCalcTable.RPNCalc:EnterKey()
+function SciRPNCalcTable.SciRPNCalc:EnterKey()
 	-- This pushes the stack up and places 0.0 in the accumulator
 	self:PushAccumulator()
 	self.bEnterLast = true
@@ -325,7 +335,7 @@ function RPNCalcTable.RPNCalc:EnterKey()
 end
 
 
-function RPNCalcTable.RPNCalc:Print()
+function SciRPNCalcTable.SciRPNCalc:Print()
 	 for i = #self.Stack, 1, -1 do
 	     print(i .. ":" ..self.Stack[i])
 	 end

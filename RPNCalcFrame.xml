@@ -2,7 +2,7 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="RPNCalc_Core.lua"/>
 	<Script file="RPNCalc.lua" />
-	<Frame name="RPNCalcFrame" parent="UIParent" frameStrata="DIALOG" toplevel = "false" movable="true" resizable="true" enableMouse="true" text = "RPN Calc">
+	<Frame name="RPNCalcFrame" parent="UIParent" frameStrata="DIALOG" toplevel = "false" movable="true" enableMouse="true" text = "RPN Calc">
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString name="fsTitle" inherits="GameFontNormal" text="Meow's RPN Calculator">

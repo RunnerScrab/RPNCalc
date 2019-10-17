@@ -19,19 +19,25 @@ calculator = {}
 local g_bArcPressed = false
 local g_bSTOPressed = false
 local g_bRCLPressed = false
-local g_bIsUIMinimized = true -- Start minimized by default
+local g_bIsUIMinimized = true
 local g_dwNormalHeight = 608
 
 function RPNCalcFrame_OnLoad(self)
 	g_dwNormalHeight = 608
+
+
+	g_bIsUIMinimized = true
+	RPNCalcFrame:SetHeight(70)
+	RPNCalcFrame_SetAllChildrenVisibility(RPNCalcFrame, false)
+	
 	self:RegisterForDrag("LeftButton");
 	calculator = RPNCalcTable.RPNCalc:New(6)
 	RPNCalcFrame_UpdateDisplay(self)
-	RPNCalcFrame_MinimizeUI(self)
+	
 end
 
 function RPNCalcFrame_OnShow(self)
-	RPNCalcFrame_SetAllChildrenVisibility(self, true)
+
 end
 
 function RPNCalcFrame_OnMouseDown(self, button)
@@ -87,7 +93,6 @@ end
 
 function RPNCalcFrame_StopMoving(self)
 	self:StopMovingOrSizing()
-	self:SetUserPlaced(true)
 end
 
 
@@ -95,7 +100,7 @@ function RPNCalcFrame_CloseWindow(self)
 	self:Hide()
 end
 
-local function RPNCalcFrame_SetAllChildrenVisibility(self, v)
+function RPNCalcFrame_SetAllChildrenVisibility(self, v)
 	local childframes = {self:GetChildren()}
 	for key, child in ipairs(childframes) do
 		if child ~= btnMinimizeUI and child ~= btnCloseUI then
@@ -113,10 +118,10 @@ local function DebugPrint(str)
 end
 
 function RPNCalcFrame_MinimizeUI(self, button)
-	DebugPrint("MinimizeUI Called w/" .. button)
+
 	g_bIsUIMinimized = not g_bIsUIMinimized
 	if g_bIsUIMinimized == true then
-		self:SetHeight(60)
+		self:SetHeight(70)
 	else
 		self:SetHeight(g_dwNormalHeight)
 	end
@@ -328,5 +333,6 @@ end
 function ShowRPNCalc()
 	RPNCalcFrame:Show()
 end
+
 SlashCmdList["RPNCALC"] = ShowRPNCalc;
 SLASH_RPNCALC1 = "/rpncalc";

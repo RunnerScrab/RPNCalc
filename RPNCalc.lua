@@ -109,7 +109,7 @@ local function RPNCalcFrame_SetAllChildrenVisibility(self, v)
 end
 
 local function DebugPrint(str)
-	print(str)
+	--print(str)
 end
 
 function RPNCalcFrame_MinimizeUI(self, button)

@@ -1,21 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file="RPNCalc_Core.lua"/>
+	<Script file="RPNCalc_Core.lua" />
 	<Script file="RPNCalc.lua" />
-	<Frame name="RPNCalcFrame" parent="UIParent" frameStrata="DIALOG" toplevel = "false" movable="true" enableMouse="true" text = "RPN Calc">
-		<Layers>
-			<Layer level="OVERLAY">
-				<FontString name="fsTitle" inherits="GameFontNormal" text="Meow's RPN Calculator">
-					<Size x="153" y="20" />
-					<Anchors>
-						<Anchor point="TOPLEFT" x="19" y="-19" />
-					</Anchors>
-				</FontString>
-			</Layer>
-		</Layers>
-		<Size x="280" y="70" />
+	<Frame text="RPN Calc" name="RPNCalcFrame" parent="UIParent" movable="true" frameStrata="DIALOG" enableMouse="true">
+		<Size x="280" y="620" />
 		<Anchors>
-			<Anchor point="CENTER" x="-180" y="63" />
+			<Anchor point="CENTER" x="-180" y="57" />
 		</Anchors>
 		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
 			<BackgroundInsets>
@@ -28,19 +17,36 @@
 				<AbsValue val="32" />
 			</EdgeSize>
 		</Backdrop>
-		<Scripts>
-			<OnLoad>RPNCalcFrame_OnLoad(self);</OnLoad>
-			<OnMouseDown>RPNCalcFrame_OnMouseDown(self, button);</OnMouseDown>
-			<OnMouseUp>RPNCalcFrame_OnMouseUp(self, button);</OnMouseUp>
-			<OnDragStart>RPNCalcFrame_StartMoving(self);</OnDragStart>
-			<OnDragStop>RPNCalcFrame_StopMoving(self);</OnDragStop>
-			<OnKeyDown>RPNCalcFrame_OnKeyDown(self, key);</OnKeyDown>
-			<OnShow>
-				RPNCalcFrame_OnShow(self);
-			</OnShow>
-		</Scripts>
-		<Frames>	
-			<Frame name="OutputBackgroundFrame" hidden = "true">
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="fsTitle" inherits="GameFontNormal" text="Meow's RPN Calculator">
+					<Size x="153" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="19" y="-19" />
+					</Anchors>
+				</FontString>
+				<FontString name="degreesFontString" inherits="GameFontNormal" text="D">
+					<Size x="20" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="178" y="-171" />
+					</Anchors>
+				</FontString>
+				<FontString name="radiansFontString" inherits="GameFontNormal" text="R">
+					<Size x="20" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="141" y="-171" />
+					</Anchors>
+				</FontString>
+				<FontString name="gradiansFontString" inherits="GameFontNormal" text="G">
+					<Size x="20" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="217" y="-171" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="OutputBackgroundFrame">
 				<Size x="224" y="120" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-55" />
@@ -92,426 +98,546 @@
 					</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn7" inherits="UIPanelButtonTemplate" text="7" hidden = "true">
+			<Button name="btn7" inherits="UIPanelButtonTemplate" text="7">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="88" y="-361" />
+					<Anchor point="TOPLEFT" x="88" y="-375" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 7);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 7);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn8" inherits="UIPanelButtonTemplate" text="8" hidden = "true">
+			<Button name="btn8" inherits="UIPanelButtonTemplate" text="8">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="144" y="-361" />
+					<Anchor point="TOPLEFT" x="144" y="-375" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 8);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 8);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn9" inherits="UIPanelButtonTemplate" text="9" hidden = "true">
+			<Button name="btn9" inherits="UIPanelButtonTemplate" text="9">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="200" y="-361" />
+					<Anchor point="TOPLEFT" x="200" y="-375" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 9);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 9);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn4" inherits="UIPanelButtonTemplate" text="4" hidden = "true">
+			<Button name="btn4" inherits="UIPanelButtonTemplate" text="4">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="88" y="-417" />
+					<Anchor point="TOPLEFT" x="88" y="-431" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 4);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 4);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn5" inherits="UIPanelButtonTemplate" text="5" hidden = "true">
+			<Button name="btn5" inherits="UIPanelButtonTemplate" text="5">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="144" y="-417" />
+					<Anchor point="TOPLEFT" x="144" y="-431" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 5);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 5);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn6" inherits="UIPanelButtonTemplate" text="6" hidden = "true">
+			<Button name="btn6" inherits="UIPanelButtonTemplate" text="6">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="200" y="-417" />
+					<Anchor point="TOPLEFT" x="200" y="-431" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 6);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 6);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn1" inherits="UIPanelButtonTemplate" text="1" hidden = "true">
+			<Button name="btn1" inherits="UIPanelButtonTemplate" text="1">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="88" y="-473" />
+					<Anchor point="TOPLEFT" x="88" y="-487" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 1);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 1);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn2" inherits="UIPanelButtonTemplate" text="2" hidden = "true">
+			<Button name="btn2" inherits="UIPanelButtonTemplate" text="2">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="144" y="-473" />
+					<Anchor point="TOPLEFT" x="144" y="-487" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 2);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 2);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn3" inherits="UIPanelButtonTemplate" text="3" hidden = "true">
+			<Button name="btn3" inherits="UIPanelButtonTemplate" text="3">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="200" y="-473" />
+					<Anchor point="TOPLEFT" x="200" y="-487" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 3);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 3);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btn0" inherits="UIPanelButtonTemplate" text="0" hidden = "true">
+			<Button name="btn0" inherits="UIPanelButtonTemplate" text="0">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="88" y="-529" />
+					<Anchor point="TOPLEFT" x="88" y="-543" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, 0);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, 0);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnDecPt" inherits="UIPanelButtonTemplate" text="." hidden = "true">
+			<Button name="btnDecPt" inherits="UIPanelButtonTemplate" text=".">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="144" y="-529" />
+					<Anchor point="TOPLEFT" x="144" y="-543" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NumPress(self, button, ".");
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NumPress(self, button, ".");</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnPi" inherits="UIPanelButtonTemplate" text="π" hidden = "true">
+			<Button name="btnPi" inherits="UIPanelButtonTemplate" text="π">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="200" y="-529" />
+					<Anchor point="TOPLEFT" x="200" y="-543" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_PiPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_PiPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnSub" inherits="UIPanelButtonTemplate" text="-" hidden = "true">
+			<Button name="btnSub" inherits="UIPanelButtonTemplate" text="-">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="32" y="-361" />
+					<Anchor point="TOPLEFT" x="32" y="-375" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_SubPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_SubPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnAdd" inherits="UIPanelButtonTemplate" text="+" hidden = "true">
+			<Button name="btnAdd" inherits="UIPanelButtonTemplate" text="+">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="32" y="-417" />
+					<Anchor point="TOPLEFT" x="32" y="-431" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_AddPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_AddPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnMul" inherits="UIPanelButtonTemplate" text="X" hidden = "true">
+			<Button name="btnMul" inherits="UIPanelButtonTemplate" text="X">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="32" y="-473" />
+					<Anchor point="TOPLEFT" x="32" y="-487" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_MulPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_MulPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnDiv" inherits="UIPanelButtonTemplate" text="/" hidden = "true">
+			<Button name="btnDiv" inherits="UIPanelButtonTemplate" text="/">
 				<Size x="50" y="50" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="32" y="-529" />
+					<Anchor point="TOPLEFT" x="32" y="-543" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_DivPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_DivPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x" hidden = "true">
+			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="29" y="-177" />
+					<Anchor point="TOPLEFT" x="29" y="-191" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_PowPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_PowPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnLog" inherits="UIPanelButtonTemplate" text="log" hidden = "true">
+			<Button name="btnLog" inherits="UIPanelButtonTemplate" text="log">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="75" y="-177" />
+					<Anchor point="TOPLEFT" x="75" y="-191" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_Log10Press(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_Log10Press(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnNatLog" inherits="UIPanelButtonTemplate" text="ln" hidden = "true">
+			<Button name="btnNatLog" inherits="UIPanelButtonTemplate" text="ln">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="121" y="-177" />
+					<Anchor point="TOPLEFT" x="121" y="-191" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NaturalLogPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NaturalLogPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnExp" inherits="UIPanelButtonTemplate" text="e^x" hidden = "true">
+			<Button name="btnExp" inherits="UIPanelButtonTemplate" text="e^x">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="167" y="-177" />
+					<Anchor point="TOPLEFT" x="167" y="-191" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_EtoXPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_EtoXPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnClear" inherits="UIPanelButtonTemplate" text="CLR" hidden = "true">
+			<Button name="btnClear" inherits="UIPanelButtonTemplate" text="CLR">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="213" y="-177" />
+					<Anchor point="TOPLEFT" x="213" y="-191" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_CLRPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_CLRPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√" hidden = "true">
+			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="29" y="-223" />
+					<Anchor point="TOPLEFT" x="29" y="-237" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_SqrtPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_SqrtPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnArc" inherits="UIPanelButtonTemplate" text="arc" hidden = "true">
+			<Button name="btnArc" inherits="UIPanelButtonTemplate" text="arc">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="75" y="-223" />
+					<Anchor point="TOPLEFT" x="75" y="-237" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_ArcPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_ArcPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnSin" inherits="UIPanelButtonTemplate" text="sin" hidden = "true">
+			<Button name="btnSin" inherits="UIPanelButtonTemplate" text="sin">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="121" y="-223" />
+					<Anchor point="TOPLEFT" x="121" y="-237" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_SinPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_SinPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnCos" inherits="UIPanelButtonTemplate" text="cos" hidden = "true">
+			<Button name="btnCos" inherits="UIPanelButtonTemplate" text="cos">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="167" y="-223" />
+					<Anchor point="TOPLEFT" x="167" y="-237" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_CosPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_CosPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnTan" inherits="UIPanelButtonTemplate" text="tan" hidden = "true">
+			<Button name="btnTan" inherits="UIPanelButtonTemplate" text="tan">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="213" y="-223" />
+					<Anchor point="TOPLEFT" x="213" y="-237" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_TanPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_TanPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnInv" inherits="UIPanelButtonTemplate" text="1/x" hidden = "true">
+			<Button name="btnInv" inherits="UIPanelButtonTemplate" text="1/x">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="29" y="-269" />
+					<Anchor point="TOPLEFT" x="29" y="-283" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_InvPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_InvPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnSwap" inherits="UIPanelButtonTemplate" text="x↔y" hidden = "true">
+			<Button name="btnSwap" inherits="UIPanelButtonTemplate" text="x↔y">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="75" y="-269" />
+					<Anchor point="TOPLEFT" x="75" y="-283" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_SwapPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_SwapPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnRotateDown" inherits="UIPanelButtonTemplate" text="R↓" hidden = "true">
+			<Button name="btnRotateDown" inherits="UIPanelButtonTemplate" text="R↓">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="121" y="-269" />
+					<Anchor point="TOPLEFT" x="121" y="-283" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_RotDownPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_RotDownPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnSto" inherits="UIPanelButtonTemplate" text="STO" hidden = "true">
+			<Button name="btnSto" inherits="UIPanelButtonTemplate" text="STO">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="167" y="-269" />
+					<Anchor point="TOPLEFT" x="167" y="-283" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_StoPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_StoPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnRcl" inherits="UIPanelButtonTemplate" text="RCL" hidden = "true">
+			<Button name="btnRcl" inherits="UIPanelButtonTemplate" text="RCL">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="213" y="-269" />
+					<Anchor point="TOPLEFT" x="213" y="-283" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_RclPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_RclPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnEnter" inherits="UIPanelButtonTemplate" text="ENTER" hidden = "true">
+			<Button name="btnEnter" inherits="UIPanelButtonTemplate" text="ENTER">
 				<Size x="83" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="32" y="-315" />
+					<Anchor point="TOPLEFT" x="32" y="-329" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_EnterPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_EnterPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnNeg" inherits="UIPanelButtonTemplate" text="±" hidden = "true">
+			<Button name="btnNeg" inherits="UIPanelButtonTemplate" text="±">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="121" y="-315" />
+					<Anchor point="TOPLEFT" x="121" y="-329" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_NegPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_NegPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnEex" inherits="UIPanelButtonTemplate" text="E ex" hidden = "true">
+			<Button name="btnEex" inherits="UIPanelButtonTemplate" text="E ex">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="167" y="-315" />
+					<Anchor point="TOPLEFT" x="167" y="-329" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_EexPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_EexPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
-			<Button name="btnClx" inherits="UIPanelButtonTemplate" text="cl x" hidden = "true">
+			<Button name="btnClx" inherits="UIPanelButtonTemplate" text="cl x">
 				<Size x="40" y="40" />
 				<Anchors>
-					<Anchor point="TOPLEFT" x="213" y="-315" />
+					<Anchor point="TOPLEFT" x="213" y="-329" />
 				</Anchors>
+				<Scripts>
+					<OnMouseDown>
+						RPNCalcFrame_ClrXPress(self);
+					</OnMouseDown>
+				</Scripts>
 				<NormalFont style="ConsoleFontNormal" />
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
-				<Scripts>
-					<OnMouseDown>RPNCalcFrame_ClrXPress(self);</OnMouseDown>
-				</Scripts>
 			</Button>
+			<CheckButton name="checkRad" inherits="UICheckButtonTemplate" text="Radians">
+				<Size x="20" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="160" y="-171" />
+				</Anchors>
+				<Scripts>
+					<OnClick>RPNCalcFrame_CheckRadians(self, button, down);</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="checkDeg" inherits="UICheckButtonTemplate" text="Degrees">
+				<Size x="20" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="197" y="-171" />
+				</Anchors>
+				<Scripts>
+					<OnClick>RPNCalcFrame_CheckDegrees(self, button, down);</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="checkGrad" inherits="UICheckButtonTemplate" text="Gradians">
+				<Size x="20" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="236" y="-171" />
+				</Anchors>
+				<Scripts>
+					<OnClick>RPNCalcFrame_CheckGradians(self, button, down);</OnClick>
+				</Scripts>
+			</CheckButton>
 		</Frames>
+		<Scripts>
+			<OnLoad>
+				RPNCalcFrame_OnLoad(self);
+			</OnLoad>
+			<OnMouseDown>
+				RPNCalcFrame_OnMouseDown(self, button);
+			</OnMouseDown>
+			<OnMouseUp>
+				RPNCalcFrame_OnMouseUp(self, button);
+			</OnMouseUp>
+			<OnDragStart>
+				RPNCalcFrame_StartMoving(self);
+			</OnDragStart>
+			<OnDragStop>
+				RPNCalcFrame_StopMoving(self);
+			</OnDragStop>
+			<OnKeyDown>
+				RPNCalcFrame_OnKeyDown(self, key);
+			</OnKeyDown>
+			<OnShow>
+				RPNCalcFrame_OnShow(self);
+			</OnShow>
+		</Scripts>
 	</Frame>
 </Ui>

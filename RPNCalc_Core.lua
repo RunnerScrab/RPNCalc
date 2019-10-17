@@ -46,10 +46,18 @@ function RPNCalcTable.RPNCalc:New(stack_size)
 	 for i = 1, stack_size do
 	     table.insert(new_stack, 0.0)
 	 end
-	 obj = obj or {Stack = new_stack, Memory = {}, TrigMode = 0, bDecPtLast = false, bDigitEntryLast = false, bEnterLast = false}
+	 obj = obj or {Stack = new_stack, Memory = {}, TrigMode = 1, bDecPtLast = false, bDigitEntryLast = false, bEnterLast = false}
 	 setmetatable(obj, self)
 	 self.__index = self
 	 return obj
+end
+
+function RPNCalcTable.RPNCalc:SetTrigMode(v)
+	self.TrigMode = v
+end
+
+function RPNCalcTable.RPNCalc:GetTrigMode()
+	return self.TrigMode
 end
 
 function RPNCalcTable.RPNCalc:ClearAllFlags()

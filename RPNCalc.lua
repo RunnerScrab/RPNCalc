@@ -20,11 +20,10 @@ local g_bArcPressed = false
 local g_bSTOPressed = false
 local g_bRCLPressed = false
 local g_bIsUIMinimized = true
-local g_dwNormalHeight = 608
+local g_dwNormalHeight = 620
+local g_TrigMode = 0 -- TODO: Persist this setting
 
 function RPNCalcFrame_OnLoad(self)
-	g_dwNormalHeight = 608
-
 
 	g_bIsUIMinimized = true
 	RPNCalcFrame:SetHeight(70)
@@ -32,6 +31,7 @@ function RPNCalcFrame_OnLoad(self)
 	
 	self:RegisterForDrag("LeftButton");
 	calculator = RPNCalcTable.RPNCalc:New(6)
+	calculator:SetTrigMode(g_TrigMode)
 	RPNCalcFrame_UpdateDisplay(self)
 	
 end
@@ -101,6 +101,17 @@ function RPNCalcFrame_CloseWindow(self)
 end
 
 function RPNCalcFrame_SetAllChildrenVisibility(self, v)
+
+	if v then 
+		degreesFontString:Show()
+		radiansFontString:Show()
+		gradiansFontString:Show()
+	else
+		degreesFontString:Hide()
+		radiansFontString:Hide()
+		gradiansFontString:Hide()
+	end
+	
 	local childframes = {self:GetChildren()}
 	for key, child in ipairs(childframes) do
 		if child ~= btnMinimizeUI and child ~= btnCloseUI then
@@ -128,15 +139,67 @@ function RPNCalcFrame_MinimizeUI(self, button)
 	RPNCalcFrame_SetAllChildrenVisibility(self, not g_bIsUIMinimized)
 end
 
+function RPNCalcFrame_CheckDegrees(self, button, down)
+	calculator:SetTrigMode(1)
+	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+end
+
+function RPNCalcFrame_CheckRadians(self, button, down)
+	calculator:SetTrigMode(0)
+	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+end
+
+function RPNCalcFrame_CheckGradians(self, button, down)
+	calculator:SetTrigMode(2)
+	RPNCalcFrame_UpdateDisplay(RPNCalcFrame)
+end
+
+function RPNCalcFrame_UpdateTrigModeCheckboxes(self)
+	local mode = calculator:GetTrigMode()
+
+	if mode == 0 then
+		-- Radians
+		checkDeg:SetChecked(false)
+		checkRad:SetChecked(true)
+		checkGrad:SetChecked(false)
+	elseif mode == 1 then
+		-- Degrees
+		checkDeg:SetChecked(true)
+		checkRad:SetChecked(false)
+		checkGrad:SetChecked(false)
+	else
+		-- Gradians
+		checkDeg:SetChecked(false)
+		checkRad:SetChecked(false)
+		checkGrad:SetChecked(true)
+	end
+end
+
+function GetRowFormatString(val)
+	if string.find(val, "E") ~= nil then
+		return "%s"
+	elseif string.find(val, "%.") ~= nil then
+		return "%.10f"
+	else
+		return "%d"
+	end
+end
+
 function RPNCalcFrame_UpdateDisplay(self)
 	RPNOutputFrame:Clear()
 
 	for row=#calculator.Stack,3,-1 do
-		RPNOutputFrame:AddMessage("r".. (row - 2) .. ": " .. calculator.Stack[row], 1.0, 1.0, 1.0)
+		local val = calculator.Stack[row]
+		local str = string.format(GetRowFormatString(val), val)
+		RPNOutputFrame:AddMessage("r".. (row - 2) .. ": " .. str, 1.0, 1.0, 1.0)
 	end
 	
-	RPNOutputFrame:AddMessage("y : " .. calculator.Stack[2], 1.0, 1.0, 1.0)
-	RPNOutputFrame:AddMessage("x : " .. calculator.Stack[1], 1.0, 1.0, 1.0)
+	local val = calculator.Stack[2]
+	local str = string.format(GetRowFormatString(val), val)
+	RPNOutputFrame:AddMessage("y : " .. str, 1.0, 1.0, 1.0)
+	val = calculator.Stack[1]
+	str = string.format(GetRowFormatString(val), val)
+	RPNOutputFrame:AddMessage("x : " .. str, 1.0, 1.0, 1.0)
 	if g_bArcPressed then
 		btnArc:SetText("ARC")
 		btnArc:LockHighlight()
@@ -156,6 +219,8 @@ function RPNCalcFrame_UpdateDisplay(self)
 	else
 		btnSto:UnlockHighlight()
 	end
+	
+	RPNCalcFrame_UpdateTrigModeCheckboxes(self)
 	
 	RPNCalc_HighlightNumberKeys(self, g_bSTOPressed or g_bRCLPressed)
 	
@@ -294,7 +359,7 @@ function RPNCalcFrame_SwapPress(self)
 end
 
 function RPNCalcFrame_PiPress(self)
-	calculator:Push("3.14159265358979")
+	calculator:Push(math.pi)
 	RPNCalcFrame_UpdateDisplay(self)
 end
 

@@ -206,7 +206,24 @@ function SciRPNCalcTable.SciRPNCalc:Div()
 end
 
 function SciRPNCalcTable.SciRPNCalc:Exponentiate()
-	 self:ApplyBinaryOperation(function(a, b) return a^b end)
+	-- Like the HP-35, do not permit the sqrt of a negative number
+	
+	local base = self.Stack[2]
+	local exponent = self.Stack[1]
+	
+	if tonumber(base) == nil or tonumber(exponent) == nil then
+		do return end
+	end
+	
+	local bBaseIsNeg = tonumber(base) < 0
+	local bExponentIsFractional = math.abs(tonumber(exponent)) < 1
+	
+	if not bBaseIsNeg or not bExponentIsFractional then
+			self:ApplyBinaryOperation(function(a, b) return a^b end)
+	else
+		self.bEnterLast = false
+	end
+	 
 end	
 
 function SciRPNCalcTable.SciRPNCalc:e_To_x()

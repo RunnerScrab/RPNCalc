@@ -284,7 +284,7 @@
 					<OnMouseDown>RPNCalcFrame_DivPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="x^y">
+			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-177" />
@@ -344,7 +344,7 @@
 					<OnMouseDown>RPNCalcFrame_CLRPress(self);</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="sqrt">
+			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-223" />

@@ -125,10 +125,13 @@ end
 
 function RPNCalcFrame_UpdateDisplay(self)
 	RPNOutputFrame:Clear()
-	for row=6,1,-1 do
-		RPNOutputFrame:AddMessage("r".. row .. ": " .. calculator.Stack[row], 1.0, 1.0, 1.0)
+
+	for row=#calculator.Stack,3,-1 do
+		RPNOutputFrame:AddMessage("r".. (row - 2) .. ": " .. calculator.Stack[row], 1.0, 1.0, 1.0)
 	end
 	
+	RPNOutputFrame:AddMessage("y : " .. calculator.Stack[2], 1.0, 1.0, 1.0)
+	RPNOutputFrame:AddMessage("x : " .. calculator.Stack[1], 1.0, 1.0, 1.0)
 	if g_bArcPressed == true then
 		btnArc:SetText("ARC")
 		btnArc:LockHighlight()

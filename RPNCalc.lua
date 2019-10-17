@@ -168,13 +168,13 @@ function RPNCalcFrame_NumPress(self, button, number)
 	if g_bRCLPressed == true or g_bSTOPressed == true then
 		if g_bRCLPressed == true then
 			calculator:Recall(number)
-			g_bRCLPressed = false
 		end
 		
 		if g_bSTOPressed == true then
 			calculator:Store(number)
-			g_bSTOPressed = false
 		end
+		g_bSTOPressed = false
+		g_bRCLPressed = false
 	else
 		calculator:AppendToAccumulator(number)
 	end

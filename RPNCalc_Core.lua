@@ -19,6 +19,7 @@ RPNCalcTable = {RPNCalc = {}}
 
 function RPNCalcTable.RPNCalc:Store(name)
 	 self.Memory[name] = self:Pop()
+	 self:ClearEntryFlag()
 end
 
 function RPNCalcTable.RPNCalc:Recall(name)
@@ -28,7 +29,7 @@ function RPNCalcTable.RPNCalc:Recall(name)
 	else
 		self.Stack[1] = 0.0
 	end
-	self:SetEntryFlag()
+	self:ClearEntryFlag()
 	self.bEnterLast = false
 end
 

@@ -104,7 +104,7 @@ function RPNCalcFrame_SetAllChildrenVisibility(self, v)
 	local childframes = {self:GetChildren()}
 	for key, child in ipairs(childframes) do
 		if child ~= btnMinimizeUI and child ~= btnCloseUI then
-			if v == true then
+			if v then
 				child:Show()
 			else
 				child:Hide()
@@ -120,7 +120,7 @@ end
 function RPNCalcFrame_MinimizeUI(self, button)
 
 	g_bIsUIMinimized = not g_bIsUIMinimized
-	if g_bIsUIMinimized == true then
+	if g_bIsUIMinimized then
 		self:SetHeight(70)
 	else
 		self:SetHeight(g_dwNormalHeight)
@@ -137,7 +137,7 @@ function RPNCalcFrame_UpdateDisplay(self)
 	
 	RPNOutputFrame:AddMessage("y : " .. calculator.Stack[2], 1.0, 1.0, 1.0)
 	RPNOutputFrame:AddMessage("x : " .. calculator.Stack[1], 1.0, 1.0, 1.0)
-	if g_bArcPressed == true then
+	if g_bArcPressed then
 		btnArc:SetText("ARC")
 		btnArc:LockHighlight()
 	else
@@ -145,26 +145,26 @@ function RPNCalcFrame_UpdateDisplay(self)
 		btnArc:UnlockHighlight()
 	end
 	
-	if g_bRCLPressed == true then
+	if g_bRCLPressed then
 		btnRcl:LockHighlight()
 	else
 		btnRcl:UnlockHighlight()
 	end
 	
-	if g_bSTOPressed == true then
+	if g_bSTOPressed then
 		btnSto:LockHighlight()
 	else
 		btnSto:UnlockHighlight()
 	end
 	
-	RPNCalc_HighlightNumberKeys(self, g_bSTOPressed == true or g_bRCLPressed == true)
+	RPNCalc_HighlightNumberKeys(self, g_bSTOPressed or g_bRCLPressed)
 	
 end
 
 function RPNCalc_HighlightNumberKeys(self, on)
 	local numkeys = {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9}
 	for i = 1, #numkeys do
-		if on == true then
+		if on then
 			numkeys[i]:LockHighlight()
 		else
 			numkeys[i]:UnlockHighlight()
@@ -173,14 +173,12 @@ function RPNCalc_HighlightNumberKeys(self, on)
 end
 
 function RPNCalcFrame_NumPress(self, button, number)
-	if g_bRCLPressed == true or g_bSTOPressed == true then
-		if g_bRCLPressed == true then
-			calculator:Recall(number)
-		end
-		
-		if g_bSTOPressed == true then
-			calculator:Store(number)
-		end
+	if g_bRCLPressed then
+		calculator:Recall(number)
+		g_bSTOPressed = false
+		g_bRCLPressed = false
+	elseif g_bSTOPressed then
+		calculator:Store(number)
 		g_bSTOPressed = false
 		g_bRCLPressed = false
 	else
@@ -245,7 +243,7 @@ function RPNCalcFrame_SquarePress(self)
 end
 
 function RPNCalcFrame_SinPress(self)
-	if g_bArcPressed == true then
+	if g_bArcPressed then
 		calculator:Arcsin()
 	else
 		calculator:Sin()
@@ -255,7 +253,7 @@ function RPNCalcFrame_SinPress(self)
 end
 
 function RPNCalcFrame_CosPress(self)
-	if g_bArcPressed == true then
+	if g_bArcPressed then
 		calculator:Arccos()
 	else
 		calculator:Cos()
@@ -265,7 +263,7 @@ function RPNCalcFrame_CosPress(self)
 end
 
 function RPNCalcFrame_TanPress(self)
-	if g_bArcPressed == true then
+	if g_bArcPressed then
 		calculator:Arctan()
 	else
 		calculator:Tan()

@@ -273,9 +273,9 @@ function RPNCalcTable.RPNCalc:AppendToAccumulator(char)
 	local bHasDecPt = string.find(self.Stack[1], "%.") ~= nil
 	
 	if char == "E" and bHasE then
-	
+		-- Do nothing if E EX is pressed and we are already in that mode
 	elseif char == "." and (bHasDecPt or bHasE) then
-	
+		-- Do not permit an extra decimal point inside a mantissa
 	else
 		if self.Stack[1] == 0 or self.Stack[1] == "0" then
 			self.Stack[1] = ""

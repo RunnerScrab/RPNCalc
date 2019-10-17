@@ -1,9 +1,9 @@
-###Summary
+Summary
 
 A graphical, scientific RPN calculator addon for WoW Classic; it is roughly
 equivalent to an HP-35 in functionality.
 
-###Features
+Features
 
 * Full color GUI
 * RPN input
@@ -16,6 +16,6 @@ equivalent to an HP-35 in functionality.
 * Marginally more convenient than alt+tabbing to Windows Calculator
 * Starts minimized by default
 
-###Commands
+Commands
 
 `/scirpncalc` opens up the calculator window

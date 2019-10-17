@@ -202,7 +202,11 @@ function SciRPNCalcTable.SciRPNCalc:Mul()
 end
 
 function SciRPNCalcTable.SciRPNCalc:Div()
-	 self:ApplyBinaryOperation(function(a, b) return a/b end)
+-- Do not permit division by integer 0
+	local divisor = tonumber(self.Stack[1])
+	if divisor ~= nil and divisor ~= 0 then
+		self:ApplyBinaryOperation(function(a, b) return a/b end)
+	end
 end
 
 function SciRPNCalcTable.SciRPNCalc:Exponentiate()

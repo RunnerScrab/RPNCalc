@@ -257,9 +257,33 @@ function RPNCalcTable.RPNCalc:Arctan()
 	self:ApplyInverseTrigonometricOperation(math.atan)
 end
 
+function StringLastMatch(str, char)
+	local matchi = 0
+	local lastmatchi = nil
+	repeat
+		matchi = string.find(str, char, matchi  + 1)
+		if matchi ~= nil then
+			lastmatchi = matchi
+		end
+	until matchi == nil
+	return lastmatchi
+end
+
 function RPNCalcTable.RPNCalc:Negate()
 	-- CH S on the HP-35
-	self:ApplyUnaryOperation(function(a) return a * (-1); end)
+	local bHasE = string.find(self.Stack[1], "E") ~= nil
+	
+	if bHasE then
+		-- Special case for entering E format numbers
+		local Ematchbegin, Ematchend = string.find(self.Stack[1], "E")
+		local Nmatchend = StringLastMatch(self.Stack[1], "-")
+		if Nmatchend == nil or Nmatchend < Ematchbegin then
+			-- Permit a negative sign before E, but not one already after
+			self:AppendToAccumulator("-")
+		end
+	else
+		self:ApplyUnaryOperation(function(a) return a * (-1); end)
+	end
 end
 
 function RPNCalcTable.RPNCalc:AppendToAccumulator(char)

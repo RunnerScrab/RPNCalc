@@ -178,6 +178,8 @@ end
 function GetRowFormatString(val)
 	if string.find(val, "E") ~= nil then
 		return "%s"
+	elseif tonumber(val) == nil then
+		return "%s"
 	elseif string.find(val, "%.") ~= nil then
 		return "%.10f"
 	else

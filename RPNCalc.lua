@@ -321,3 +321,9 @@ function RPNCalcFrame_EnterPress(self)
 	calculator:EnterKey()
 	RPNCalcFrame_UpdateDisplay(self)
 end
+
+function ShowRPNCalc()
+	RPNCalcFrame:Show()
+end
+SlashCmdList["RPNCALC"] = ShowRPNCalc;
+SLASH_RPNCALC1 = "/rpncalc";

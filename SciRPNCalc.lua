@@ -22,6 +22,7 @@ local g_bRCLPressed = false
 local g_bIsUIMinimized = true
 local g_dwNormalHeight = 620
 local g_TrigMode = 0 -- TODO: Persist this setting
+local g_bMouseInFrame = false
 
 function SciRPNCalcFrame_OnLoad(self)
 
@@ -48,40 +49,52 @@ function SciRPNCalcFrame_OnMouseUp(self, button)
 	
 end
 
+function SciRPNCalcFrame_OnEnter(self)
+	g_bMouseInFrame = true
+end
+
+function SciRPNCalcFrame_OnLeave(self)
+	g_bMouseInFrame = false
+end
+
 function SciRPNCalcFrame_OnKeyDown(self, key)
-	self:SetPropagateKeyboardInput(false)
-	if key == "ENTER" then
-		SciRPNCalcFrame_EnterPress(self)
-	elseif key == "NUMPAD1" then
-		SciRPNCalcFrame_NumPress(self, nil, 1)
-	elseif key == "NUMPAD2" then
-		SciRPNCalcFrame_NumPress(self, nil, 2)
-	elseif key == "NUMPAD3" then
-		SciRPNCalcFrame_NumPress(self, nil, 3)
-	elseif key == "NUMPAD4" then
-		SciRPNCalcFrame_NumPress(self, nil, 4)
-	elseif key == "NUMPAD5" then
-		SciRPNCalcFrame_NumPress(self, nil, 5)
-	elseif key == "NUMPAD6" then
-		SciRPNCalcFrame_NumPress(self, nil, 6)
-	elseif key == "NUMPAD7" then
-		SciRPNCalcFrame_NumPress(self, nil, 7)
-	elseif key == "NUMPAD8" then
-		SciRPNCalcFrame_NumPress(self, nil, 8)
-	elseif key == "NUMPAD9" then
-		SciRPNCalcFrame_NumPress(self, nil, 9)
-	elseif key == "NUMPAD0" then
-		SciRPNCalcFrame_NumPress(self, nil, 0)
-	elseif key == "NUMPADDECIMAL" then
-		SciRPNCalcFrame_NumPress(self, nil, ".")
-	elseif key == "NUMPADDIVIDE" then
-		SciRPNCalcFrame_DivPress(self)
-	elseif key == "NUMPADMULTIPLY" then
-		SciRPNCalcFrame_MulPress(self)
-	elseif key == "NUMPADPLUS" then
-		SciRPNCalcFrame_AddPress(self)
-	elseif key == "NUMPADMINUS" then
-		SciRPNCalcFrame_SubPress(self)
+	if g_bMouseInFrame then
+		self:SetPropagateKeyboardInput(false)
+		if key == "ENTER" then
+			SciRPNCalcFrame_EnterPress(self)
+		elseif key == "NUMPAD1" then
+			SciRPNCalcFrame_NumPress(self, nil, 1)
+		elseif key == "NUMPAD2" then
+			SciRPNCalcFrame_NumPress(self, nil, 2)
+		elseif key == "NUMPAD3" then
+			SciRPNCalcFrame_NumPress(self, nil, 3)
+		elseif key == "NUMPAD4" then
+			SciRPNCalcFrame_NumPress(self, nil, 4)
+		elseif key == "NUMPAD5" then
+			SciRPNCalcFrame_NumPress(self, nil, 5)
+		elseif key == "NUMPAD6" then
+			SciRPNCalcFrame_NumPress(self, nil, 6)
+		elseif key == "NUMPAD7" then
+			SciRPNCalcFrame_NumPress(self, nil, 7)
+		elseif key == "NUMPAD8" then
+			SciRPNCalcFrame_NumPress(self, nil, 8)
+		elseif key == "NUMPAD9" then
+			SciRPNCalcFrame_NumPress(self, nil, 9)
+		elseif key == "NUMPAD0" then
+			SciRPNCalcFrame_NumPress(self, nil, 0)
+		elseif key == "NUMPADDECIMAL" then
+			SciRPNCalcFrame_NumPress(self, nil, ".")
+		elseif key == "NUMPADDIVIDE" then
+			SciRPNCalcFrame_DivPress(self)
+		elseif key == "NUMPADMULTIPLY" then
+			SciRPNCalcFrame_MulPress(self)
+		elseif key == "NUMPADPLUS" then
+			SciRPNCalcFrame_AddPress(self)
+		elseif key == "NUMPADMINUS" then
+			SciRPNCalcFrame_SubPress(self)
+		else
+			self:SetPropagateKeyboardInput(true)
+		end
 	else
 		self:SetPropagateKeyboardInput(true)
 	end

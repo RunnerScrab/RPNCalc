@@ -1,7 +1,13 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="SciRPNCalc_Core.lua" />
 	<Script file="SciRPNCalc.lua" />
-	<Frame text="RPN Calc" name="SciRPNCalcFrame" parent="UIParent" movable="true" frameStrata="DIALOG" enableMouse="true">
+	<Button name="SciRPNButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+	<Scripts>
+		<OnEnter>SciRPNCalcFrame_OnEnter(self);</OnEnter>
+		<OnLeave>SciRPNCalcFrame_OnLeave(self);</OnLeave>
+	</Scripts>
+	</Button>
+	<Frame text="RPN Calc" name="SciRPNCalcFrame" parent="UIParent" movable="true" frameStrata="BACKGROUND" enableMouse="true">
 		<Size x="280" y="620" />
 		<Anchors>
 			<Anchor point="CENTER" x="-180" y="57" />
@@ -76,7 +82,8 @@
 					</MessageFrame>
 				</Frames>
 			</Frame>
-			<Button name="btnCloseUI" inherits="UIPanelButtonTemplate" text="x">
+
+			<Button name="btnCloseUI" inherits="SciRPNButtonTemplate" text="x">
 				<Size x="30" y="30" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="223" y="-19" />
@@ -87,7 +94,7 @@
 					</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btnMinimizeUI" inherits="UIPanelButtonTemplate" text="_">
+			<Button name="btnMinimizeUI" inherits="SciRPNButtonTemplate" text="_">
 				<Size x="30" y="30" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="188" y="-19" />
@@ -98,7 +105,7 @@
 					</OnMouseDown>
 				</Scripts>
 			</Button>
-			<Button name="btn7" inherits="UIPanelButtonTemplate" text="7">
+			<Button name="btn7" inherits="SciRPNButtonTemplate" text="7">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-375" />
@@ -112,7 +119,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn8" inherits="UIPanelButtonTemplate" text="8">
+			<Button name="btn8" inherits="SciRPNButtonTemplate" text="8">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-375" />
@@ -126,7 +133,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn9" inherits="UIPanelButtonTemplate" text="9">
+			<Button name="btn9" inherits="SciRPNButtonTemplate" text="9">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-375" />
@@ -140,7 +147,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn4" inherits="UIPanelButtonTemplate" text="4">
+			<Button name="btn4" inherits="SciRPNButtonTemplate" text="4">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-431" />
@@ -154,7 +161,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn5" inherits="UIPanelButtonTemplate" text="5">
+			<Button name="btn5" inherits="SciRPNButtonTemplate" text="5">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-431" />
@@ -168,7 +175,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn6" inherits="UIPanelButtonTemplate" text="6">
+			<Button name="btn6" inherits="SciRPNButtonTemplate" text="6">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-431" />
@@ -182,7 +189,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn1" inherits="UIPanelButtonTemplate" text="1">
+			<Button name="btn1" inherits="SciRPNButtonTemplate" text="1">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-487" />
@@ -196,7 +203,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn2" inherits="UIPanelButtonTemplate" text="2">
+			<Button name="btn2" inherits="SciRPNButtonTemplate" text="2">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-487" />
@@ -210,7 +217,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn3" inherits="UIPanelButtonTemplate" text="3">
+			<Button name="btn3" inherits="SciRPNButtonTemplate" text="3">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-487" />
@@ -224,7 +231,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btn0" inherits="UIPanelButtonTemplate" text="0">
+			<Button name="btn0" inherits="SciRPNButtonTemplate" text="0">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="88" y="-543" />
@@ -238,7 +245,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnDecPt" inherits="UIPanelButtonTemplate" text=".">
+			<Button name="btnDecPt" inherits="SciRPNButtonTemplate" text=".">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="144" y="-543" />
@@ -252,7 +259,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnPi" inherits="UIPanelButtonTemplate" text="π">
+			<Button name="btnPi" inherits="SciRPNButtonTemplate" text="π">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="200" y="-543" />
@@ -266,7 +273,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnSub" inherits="UIPanelButtonTemplate" text="-">
+			<Button name="btnSub" inherits="SciRPNButtonTemplate" text="-">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-375" />
@@ -280,7 +287,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnAdd" inherits="UIPanelButtonTemplate" text="+">
+			<Button name="btnAdd" inherits="SciRPNButtonTemplate" text="+">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-431" />
@@ -294,7 +301,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnMul" inherits="UIPanelButtonTemplate" text="X">
+			<Button name="btnMul" inherits="SciRPNButtonTemplate" text="X">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-487" />
@@ -308,7 +315,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnDiv" inherits="UIPanelButtonTemplate" text="/">
+			<Button name="btnDiv" inherits="SciRPNButtonTemplate" text="/">
 				<Size x="50" y="50" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-543" />
@@ -322,7 +329,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnPower" inherits="UIPanelButtonTemplate" text="y^x">
+			<Button name="btnPower" inherits="SciRPNButtonTemplate" text="y^x">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-191" />
@@ -336,7 +343,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnLog" inherits="UIPanelButtonTemplate" text="log">
+			<Button name="btnLog" inherits="SciRPNButtonTemplate" text="log">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-191" />
@@ -350,7 +357,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnNatLog" inherits="UIPanelButtonTemplate" text="ln">
+			<Button name="btnNatLog" inherits="SciRPNButtonTemplate" text="ln">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-191" />
@@ -364,7 +371,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnExp" inherits="UIPanelButtonTemplate" text="e^x">
+			<Button name="btnExp" inherits="SciRPNButtonTemplate" text="e^x">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-191" />
@@ -378,7 +385,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnClear" inherits="UIPanelButtonTemplate" text="CLR">
+			<Button name="btnClear" inherits="SciRPNButtonTemplate" text="CLR">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-191" />
@@ -392,7 +399,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnSqrt" inherits="UIPanelButtonTemplate" text="√">
+			<Button name="btnSqrt" inherits="SciRPNButtonTemplate" text="√">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-237" />
@@ -406,7 +413,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnArc" inherits="UIPanelButtonTemplate" text="arc">
+			<Button name="btnArc" inherits="SciRPNButtonTemplate" text="arc">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-237" />
@@ -420,7 +427,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnSin" inherits="UIPanelButtonTemplate" text="sin">
+			<Button name="btnSin" inherits="SciRPNButtonTemplate" text="sin">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-237" />
@@ -434,7 +441,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnCos" inherits="UIPanelButtonTemplate" text="cos">
+			<Button name="btnCos" inherits="SciRPNButtonTemplate" text="cos">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-237" />
@@ -448,7 +455,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnTan" inherits="UIPanelButtonTemplate" text="tan">
+			<Button name="btnTan" inherits="SciRPNButtonTemplate" text="tan">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-237" />
@@ -462,7 +469,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnInv" inherits="UIPanelButtonTemplate" text="1/x">
+			<Button name="btnInv" inherits="SciRPNButtonTemplate" text="1/x">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="29" y="-283" />
@@ -476,7 +483,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnSwap" inherits="UIPanelButtonTemplate" text="x↔y">
+			<Button name="btnSwap" inherits="SciRPNButtonTemplate" text="x↔y">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="75" y="-283" />
@@ -490,7 +497,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnRotateDown" inherits="UIPanelButtonTemplate" text="R↓">
+			<Button name="btnRotateDown" inherits="SciRPNButtonTemplate" text="R↓">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-283" />
@@ -504,7 +511,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnSto" inherits="UIPanelButtonTemplate" text="STO">
+			<Button name="btnSto" inherits="SciRPNButtonTemplate" text="STO">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-283" />
@@ -518,7 +525,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnRcl" inherits="UIPanelButtonTemplate" text="RCL">
+			<Button name="btnRcl" inherits="SciRPNButtonTemplate" text="RCL">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-283" />
@@ -532,7 +539,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnEnter" inherits="UIPanelButtonTemplate" text="ENTER">
+			<Button name="btnEnter" inherits="SciRPNButtonTemplate" text="ENTER">
 				<Size x="83" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="32" y="-329" />
@@ -546,7 +553,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnNeg" inherits="UIPanelButtonTemplate" text="±">
+			<Button name="btnNeg" inherits="SciRPNButtonTemplate" text="±">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="121" y="-329" />
@@ -560,7 +567,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnEex" inherits="UIPanelButtonTemplate" text="E ex">
+			<Button name="btnEex" inherits="SciRPNButtonTemplate" text="E ex">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="167" y="-329" />
@@ -574,7 +581,7 @@
 				<HighlightFont style="ConsoleFontNormal" />
 				<DisabledFont style="ConsoleFontNormal" />
 			</Button>
-			<Button name="btnClx" inherits="UIPanelButtonTemplate" text="cl x">
+			<Button name="btnClx" inherits="SciRPNButtonTemplate" text="cl x">
 				<Size x="40" y="40" />
 				<Anchors>
 					<Anchor point="TOPLEFT" x="213" y="-329" />
@@ -638,6 +645,12 @@
 			<OnShow>
 				SciRPNCalcFrame_OnShow(self);
 			</OnShow>
+			<OnEnter>
+				SciRPNCalcFrame_OnEnter(self);
+			</OnEnter>
+			<OnLeave>
+				SciRPNCalcFrame_OnLeave(self);
+			</OnLeave>
 		</Scripts>
 	</Frame>
 </Ui>
